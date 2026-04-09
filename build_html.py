@@ -66,10 +66,10 @@ def build_html(data: dict) -> str:
     justify-content: space-between;
     align-items: baseline;
     padding: 8px 0 12px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
   }}
   .header .date {{
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: #999;
   }}
