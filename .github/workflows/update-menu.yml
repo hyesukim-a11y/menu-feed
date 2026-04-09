@@ -1,0 +1,37 @@
+name: Update Menu Feed
+
+on:
+  schedule:
+    # 평일(월~금) 한국시간 오전 8시 = UTC 23시(전날)
+    - cron: '0 23 * * 0-4'
+  workflow_dispatch: # 수동 실행도 가능
+
+jobs:
+  fetch-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install playwright requests beautifulsoup4
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Fetch menu from Threads
+        run: python fetcher.py
+
+      - name: Build HTML
+        run: python build_html.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/ output/
+          git diff --staged --quiet || (git commit -m "update menu $(date +%Y-%m-%d)" && git push)
