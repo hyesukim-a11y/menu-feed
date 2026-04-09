@@ -65,14 +65,13 @@ def build_html(data: dict) -> str:
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 24px 0 16px;
-    border-bottom: 2px solid #eee;
+    padding: 8px 0 12px;
     margin-bottom: 20px;
   }}
   .header .date {{
     font-size: 1.1rem;
     font-weight: 700;
-    color: #111;
+    color: #999;
   }}
   .header .updated {{
     font-size: 0.8rem;
