@@ -300,7 +300,7 @@ def save_result(post_info: dict, oembed_data: dict | None):
         "oembed": oembed_data,
     }
 
-    output_file = OUTPUT_DIR / f"menu_{today}.json"
+    output_file = OUTPUT_DIR / "menu_latest.json"
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
@@ -338,11 +338,11 @@ async def main():
         print(f"   ⚠️  oEmbed 실패 (게시물 URL은 확보됨, embed 없이 저장)")
 
     # Step 3: 저장
-    result = save_result(post_info, oembed_data)
+    save_result(post_info, oembed_data)
 
     # 요약
     print(f"\n{'='*50}")
-    print(f"✅ 완료! 결과: output/menu_{result['date']}.json")
+    print(f"✅ 완료! 결과: output/menu_latest.json")
     print(f"{'='*50}")
 
 

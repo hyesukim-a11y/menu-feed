@@ -15,8 +15,8 @@ DOCS_DIR.mkdir(exist_ok=True)
 
 
 def find_latest_json() -> Path | None:
-    files = sorted(OUTPUT_DIR.glob("menu_*.json"), reverse=True)
-    return files[0] if files else None
+    latest = OUTPUT_DIR / "menu_latest.json"
+    return latest if latest.exists() else None
 
 
 def build_html(data: dict) -> str:
