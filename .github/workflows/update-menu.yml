@@ -6,6 +6,9 @@ on:
     - cron: '58 1 * * 1-5'
   workflow_dispatch: # 수동 실행도 가능
 
+permissions:
+  contents: write
+
 jobs:
   fetch-and-deploy:
     runs-on: ubuntu-latest
