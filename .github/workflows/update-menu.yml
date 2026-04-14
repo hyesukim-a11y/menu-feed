@@ -2,9 +2,10 @@ name: Update Menu Feed
 
 on:
   schedule:
-    # 평일(월~금) 한국시간 10:30~11:00, 5분 간격 (UTC 01:30~02:00)
+    # 평일(월~금) 한국시간 10:30~12:00, 5분 간격 (UTC 01:30~03:00)
     - cron: '30,35,40,45,50,55 1 * * 1-5'
-    - cron: '0 2 * * 1-5'
+    - cron: '*/5 2 * * 1-5'
+    - cron: '0 3 * * 1-5'
   workflow_dispatch: # 수동 실행도 가능
 
 permissions:
